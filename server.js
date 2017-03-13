@@ -8,17 +8,19 @@ import Mongoose from 'mongoose';
 import Swig from 'swig';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
-import {match, RoutingContext} from 'react-router';
+import {match, RouterContext} from 'react-router';
 
 import routes from './app/routes/routes';
+import Config from './server/config';
+import Business from './server/biz/Business';
 
 
 let app = Express();
 {
-/*  Mongoose.connect(Config.database);
+  Mongoose.connect(Config.database);
   Mongoose.connection.on('error', function () {
     console.info('Error: Could not connect to MongoDB. Did you forget to run `mongod`?'.red);
-  });*/
+  });
 
   app.set('port', process.env.PORT || 3000);
   app.use(Logger('dev'));
@@ -27,7 +29,7 @@ let app = Express();
   app.use(Express.static(Path.join(__dirname, 'app')));
 }
 
-/*app.post('/api/mission', function (req, res, next) {
+app.post('/api/mission', function (req, res, next) {
   let item = {
     parentId: req.body.parentId,
     name: req.body.name,
@@ -77,20 +79,18 @@ app.get('/api/mission', function (req, res, next) {
 app.get('/api/test', function (req, res, next) {
   //res.send(Business.addTask());
   //res.send(Business.updateTask());
-  /!*let promise = Business.getItemWithSubList({_id:'5896919ca63ea406b976b67b'});
+   let promise = Business.getItemWithSubList({_id:'5896919ca63ea406b976b67b'});
    promise.then(function (v) {
    console.log('tmp1',v);
    res.send(v);
-   })*!/
-  //console.log('tmp1',tmp);
-
+   })
 
 });
 app.get('/api/migration', function (req, res, next) {
   Utils.migration().then((data)=>{
     res.send(data);
   });
-});*/
+});
 
 
 app.use(function (req, res) {
@@ -100,7 +100,7 @@ app.use(function (req, res) {
     } else if (redirectLocation) {
       res.status(302).redirect(redirectLocation.pathname + redirectLocation.search)
     } else if (renderProps) {
-      var html = ReactDOM.renderToString(React.createElement(RoutingContext, renderProps));
+      var html = ReactDOM.renderToString(React.createElement(RouterContext, renderProps));
       var page = Swig.renderFile('./app/index.html', {html: html});
       res.status(200).send(page);
     } else {
@@ -110,9 +110,6 @@ app.use(function (req, res) {
 });
 
 
-app.use(function (req, res) {
-  res.send('hello world');
-});
 
 app.listen(app.get('port'), function () {
   console.log('Express server listening on port ' + app.get('port'));

@@ -1,6 +1,6 @@
 'use strict';
 import Mongoose from 'mongoose';
-import Mission from '../models/mission';
+import Mission from './models/mission';
 
 
 class Utils {
