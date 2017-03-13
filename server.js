@@ -24,7 +24,7 @@ let app = Express();
   app.use(Logger('dev'));
   app.use(BodyParser.json());
   app.use(BodyParser.urlencoded({extended: false}));
-  app.use(Express.static(Path.join(__dirname, 'public')));
+  app.use(Express.static(Path.join(__dirname, 'app')));
 }
 
 /*app.post('/api/mission', function (req, res, next) {
