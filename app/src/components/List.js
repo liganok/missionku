@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import React from 'react';
 import {Link} from 'react-router';
 import ListItem from './ListItem';

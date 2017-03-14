@@ -7,6 +7,7 @@ import Trash from '../components/Trash';
 import Tasks from '../components/Tasks';
 import Plans from '../components/Plans';
 import Detail from '../components/Detail';
+import Test from '../components/Test';
 
 
 export default (
@@ -18,5 +19,6 @@ export default (
     <Route path='/plans' component={Plans}/>
     <Route path='/trash' component={Trash}/>
     <Route path='/detail/:id' component={Detail}/>
+    <Route path='/test' component={Test}/>
   </Route>
 );

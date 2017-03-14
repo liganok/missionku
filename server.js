@@ -8,7 +8,7 @@ import Mongoose from 'mongoose';
 import Swig from 'swig';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
-import {match, RouterContext} from 'react-router';
+import {match, RoutingContext} from 'react-router';
 
 import routes from './app/src/routes/routes';
 import Config from './server/config';
@@ -100,7 +100,7 @@ app.use(function (req, res) {
     } else if (redirectLocation) {
       res.status(302).redirect(redirectLocation.pathname + redirectLocation.search)
     } else if (renderProps) {
-      var html = ReactDOM.renderToString(React.createElement(RouterContext, renderProps));
+      var html = ReactDOM.renderToString(React.createElement(RoutingContext, renderProps));
       var page = Swig.renderFile('./app/public/index.html', {html: html});
       res.status(200).send(page);
     } else {
