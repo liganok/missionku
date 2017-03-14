@@ -8,6 +8,8 @@ import Tasks from '../components/Tasks';
 import Plans from '../components/Plans';
 import Detail from '../components/Detail';
 import Test from '../components/Test';
+import Navbar from '../components/Navbar_new';
+
 
 
 export default (
@@ -20,5 +22,7 @@ export default (
     <Route path='/trash' component={Trash}/>
     <Route path='/detail/:id' component={Detail}/>
     <Route path='/test' component={Test}/>
+    <Route path='/navbar' component={Navbar}/>
+
   </Route>
 );

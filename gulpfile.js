@@ -31,8 +31,8 @@ var dependencies = [
  */
 gulp.task('vendor', function () {
     return gulp.src([
-        'app/src/assets/js/jquery.min.js',
-        'app/src/assets/js/bootstrap.js'
+        'node_modules/jquery/dist/js/jquery.min.js',
+        'node_modules/bootstrap/dist/js/bootstrap.js'
     ]).pipe(concat('vendor.js'))
         .pipe(gulpif(production, uglify({mangle: false})))
         .pipe(gulp.dest('app/public/js'));
@@ -107,7 +107,7 @@ gulp.task('browserify-watch', ['browserify-vendor'], function () {
  */
 gulp.task('styles', function () {
     return gulp.src([
-        'app/src/assets/css/bootstrap.css'])
+        'node_modules/bootstrap/dist/css/bootstrap.css'])
         .pipe(concat('main.css'))
         .pipe(minifyCSS())
         .pipe(gulp.dest('app/public/css/'));
