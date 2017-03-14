@@ -10,7 +10,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/server';
 import {match, RouterContext} from 'react-router';
 
-import routes from './app/routes/routes';
+import routes from './app/src/routes/routes';
 import Config from './server/config';
 import Business from './server/biz/Business';
 
@@ -26,7 +26,7 @@ let app = Express();
   app.use(Logger('dev'));
   app.use(BodyParser.json());
   app.use(BodyParser.urlencoded({extended: false}));
-  app.use(Express.static(Path.join(__dirname, 'app')));
+  app.use(Express.static(Path.join(__dirname, 'app/public')));
 }
 
 app.post('/api/mission', function (req, res, next) {
@@ -101,7 +101,7 @@ app.use(function (req, res) {
       res.status(302).redirect(redirectLocation.pathname + redirectLocation.search)
     } else if (renderProps) {
       var html = ReactDOM.renderToString(React.createElement(RouterContext, renderProps));
-      var page = Swig.renderFile('./app/index.html', {html: html});
+      var page = Swig.renderFile('./app/public/index.html', {html: html});
       res.status(200).send(page);
     } else {
       res.status(404).send('Page Not Found')
