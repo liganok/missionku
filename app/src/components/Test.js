@@ -1,6 +1,6 @@
 import React from 'react';
 import AddMission from './AddMission';
-//import {Button} from 'reactstrap';
+import {Button} from 'reactstrap';
 
 
 class Test extends React.Component {
@@ -18,6 +18,7 @@ class Test extends React.Component {
   render() {
     return (
       <div>
+        <Button color="primary">primary</Button>{' '}
       </div>
     );
   }
