@@ -8,7 +8,7 @@ import Tasks from '../components/Tasks';
 import Plans from '../components/Plans';
 import Detail from '../components/Detail';
 import Test from '../components/Test';
-import Navbar from '../components/Navbar_new';
+import Navbar from '../components/Navbar';
 
 
 
